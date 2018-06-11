@@ -13,3 +13,13 @@ brew cask install visual-studio-code
 brew cask install alfred
 brew cask install iterm2
 brew cask install transmission
+
+
+# oh my zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+brew install zsh-syntax-highlighting
+
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+git config --global core.excludesfile ~/.gitignore
+
