@@ -1,0 +1,3 @@
+ln -sv ~/dotfiles/.profile ~/.profile
+ln -sv ~/dotfiles/.bashrc ~/.bashrc
+ln -sv ~/dotfiles/.inputrc ~
