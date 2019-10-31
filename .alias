@@ -13,6 +13,7 @@ alias gc="git commit -m"
 alias gl="git log --oneline"
 alias ga="git add"
 alias gp="git pull"
+alias gs="git status"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
