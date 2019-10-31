@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+import zipfile
+import argparse
+import os
+
+parser = argparse.ArgumentParser()
+parser.add_argument("filepath")
+parser.add_argument("target_path")
+
+args = parser.parse_args()
+
+latex_directory = args.filepath
+
+filepaths_to_save = []
+
+relevant_extensions = [".tex",".bbl",".bib",".png", ".jpg",".eps", ".pdf", ".cls", ".bst"]
+
+for root, dirs, files in os.walk(latex_directory):
+    for relative_filepath in files:
+        filepath = os.path.join(root, relative_filepath)
+        for ext in relevant_extensions:
+            if filepath.endswith(ext):
+                filepaths_to_save.append(filepath)
+                break
+
+
+
+
+with zipfile.ZipFile(args.target_path, "w") as fp:
+    for filepath in filepaths_to_save:
+        print("Writing:", filepath)
+        fp.write(filepath)
+
+print("Saved to:", args.target_path)

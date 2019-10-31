@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+
+
+import argparse
+import os
+
+parser = argparse.ArgumentParser()
+
+choices = ["dpheid", "dpnap"]
+parser.add_argument("project_name", choices=choices)
+
+
+args = parser.parse_args()
+
+
+project_name = args.project_name
+
+
+if project_name == "dpheid":
+    os.system("code ~/sshfs/heid/DeepPrivacy")
+if project_name == "dpnap":
+    os.system("code ~/sshfs/nap01/DeepPrivacyV2")

@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+import argparse
+import os
+from PIL import Image
+
+
+
+def compress_image(source_path, overwrite_old):
+    assert os.path.isfile(source_path), f"Did not find file: {souce_path}"
+
+    im = Image.open(source_path)
+    original_filesize = os.path.getsize(source_path) / (1024**2)
+    original_image_size = im.size
+    #print('Input file size   : ', im.size)
+    #print(f'Input image size: {filesize/(1024**2):.3f}M')
+
+    dirname = os.path.dirname(source_path)
+    filename = os.path.basename(source_path).split(".")
+    assert len(filename) == 2, f"Found 2 . in filename, was: {filename}"
+    filename, filename_ext = filename
+    if not overwrite_old:
+        filename = f"{filename}_compressed.{filename_ext}"
+        target_path = os.path.join(dirname, filename)
+    else:
+        target_path = source_path
+
+
+    
+
+    im.save(target_path, optimize=True, quality=50) 
+    new_image_size = Image.open(target_path).size
+
+    #print('Output file size  : ', im.size)
+    #print('Output file name  : ', target_path)
+    final_filesize = os.path.getsize(target_path) / (1024**2)
+    compress_percentage = 100 - final_filesize/original_filesize * 100
+    print(f"Compressed: {source_path}. Saved to: {target_path}. " + 
+          f"\n\tCompressed by: {compress_percentage:.2f}% ({final_filesize:.2f}M/{original_filesize:.2f}M)" + 
+          f"\n\tOriginal Image size: {original_image_size}. New image size: {new_image_size}"
+    )
+    #print(f'Output image size: {final_filesize/(1024**2):.3f}M')
+    #print(f"Compressed by: {100 - final_filesize/filesize*100:.3f}%")
+
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument("souce_path", nargs="+")
+parser.add_argument("--overwrite_old", default=False, action="store_true")
+
+args = parser.parse_args()
+source_path = args.souce_path
+if isinstance(source_path, list):
+    for path in source_path:
+        compress_image(path, args.overwrite_old)
+else:
+    assert isinstance(source_path, str), f"Expected a single path: {souce_path}"
+    compress_image(source_path, args.overwrite_old)
+

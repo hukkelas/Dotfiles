@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+import re
+import subprocess
+import argparse
+import os
+
+
+def replace_regex(original_str, reg):
+    res = re.search(reg, original_str)
+    while res is not None:
+        print("Removing:", "'"+original_str[res.start():res.end()] + "'")
+        original_str = original_str[:res.start()] + original_str[res.end()-1:]
+        res = re.search(reg, original_str)
+    return original_str
+
+parser = argparse.ArgumentParser()
+parser.add_argument("filepath")
+
+args = parser.parse_args()
+
+main_latex_file = args.filepath
+
+#detex_output = subprocess.check_output("ls", "-l")
+detex_output = subprocess.check_output(["detex", main_latex_file]).decode("unicode_escape")
+
+#print(detex_output)
+lines = detex_output.split("\n")
+final_lines = []
+num_newlines = 0
+for line in lines:
+    # Only add new line if there is 2 in a row.
+    line = line.strip()
+    is_newline = line == ""
+    if is_newline:
+        num_newlines += 1
+        if num_newlines == 1:
+            final_lines.append("\n\n")
+        continue
+    num_newlines = 0
+    line = line.strip()
+    
+
+    # Find and replace figures with "Figure 1"
+    # Assuming each fig starts with "fig"
+    try:
+        index1 = line.index("fig:")
+        index2 = line[index1:].index(" ")
+        if index2 == -1:
+            index2 = line[index1:].index(".")
+        if index1 != -1:
+            line = line[:index1] + "Figure 1" + line[index1+index2:]
+            #line[index1:index1+index2] = "Figure 1"
+        final_lines.append(line + " ")
+    except ValueError:
+        final_lines.append(line + " ")
+        continue
+
+final_result = "".join(final_lines)
+print(final_result)
+#os.system("echo '{}' | xclip -selection clipboard".format(final_result))
