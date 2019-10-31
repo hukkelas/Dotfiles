@@ -38,5 +38,6 @@ set convert-meta off
 
 # Use Alt/Meta + Delete to delete the preceding word
 "\e[3;3~": kill-word
-"\e\e[D": backward-word
-"\e\e[C": forward-word
+"\e[1;5D": backward-word ### ctrl left
+"\e[1;5C": forward-word ### ctrl right 
+"\C-h": backward-kill-word # ctrl + backspace delete
