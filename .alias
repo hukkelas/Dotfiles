@@ -22,3 +22,14 @@ alias egrep='egrep --color=auto'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+
+
+# docker
+alias dpsa='docker ps -a | grep haakohu'
+alias dl="docker logs "
+alias drm="docker rm "
+alias dk="docker kill"
+
+
+# shortcuts
+alias ns="nvidia-smi"
