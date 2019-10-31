@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+import argparse
+import os
+
+parser = argparse.ArgumentParser()
+parser.add_argument("filepath")
+
+args = parser.parse_args()
+
+filepath = args.filepath
+
+
+ending_to_program = {
+    ".pdf": "xdg-open",
+    "": "xdg-open"
+}
+
+for file_ending, program in ending_to_program.items():
+    if filepath.endswith(file_ending):
+        os.system(f"{program} {filepath}")
+        exit(0)

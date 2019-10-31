@@ -1,3 +1,13 @@
 ln -sv ~/dotfiles/.profile ~/.profile
 ln -sv ~/dotfiles/.bashrc ~/.bashrc
 ln -sv ~/dotfiles/.inputrc ~
+ln -sv ~/dotfiles/bin ~/bin
+
+chmod +x ~/dotfiles/bin/workon
+chmod +x ~/dotfiles/bin/biblatex_check
+chmod +x bin/compress_img
+chmod +x bin/png2pdf
+chmod +x ~/dotfiles/bin/matplotlib_remove_borders
+chmod +x ~/dotfiles/bin/open
+chmod +x bin/latex2txt
+chmod +x bin/biblatex_check

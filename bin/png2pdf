@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+import argparse
+import os
+import img2pdf
+from PIL import Image
+
+def check_alpha(source_path):
+    if not source_path.endswith(".png"):
+        return source_path, False
+    
+    im = Image.open(source_path)
+    im = im.convert("RGB")
+    file_ext = source_path.split(".")[-1]
+
+    tmp_path = source_path
+    tmp_path = tmp_path.replace(file_ext, f"_tmp.{file_ext}")
+    im.save(tmp_path)
+    return tmp_path, True
+
+
+def compress_image(source_path, overwrite_old):
+    assert os.path.isfile(source_path), f"Did not find file: {souce_path}"
+
+    dirname = os.path.dirname(source_path)
+    filename = os.path.basename(source_path).split(".")
+    assert len(filename) == 2, f"Found 2 . in filename, was: {filename}"
+    filename, filename_ext = filename
+    if not overwrite_old:
+        filename = f"{filename}_compressed.{filename_ext}"
+        target_path = os.path.join(dirname, filename)
+    else:
+        target_path = source_path
+    target_path = target_path.replace(filename_ext, "pdf")
+
+    tmp_path, delete_tmp = check_alpha(source_path)
+    if delete_tmp:
+        source_path = tmp_path
+    
+    with open(target_path, "wb") as fp:
+        fp.write(img2pdf.convert(source_path))
+    
+    if delete_tmp:
+        os.remove(tmp_path)
+
+    print(f"Converted: {source_path}. Saved to: {target_path}")
+    #print(f'Output image size: {final_filesize/(1024**2):.3f}M')
+    #print(f"Compressed by: {100 - final_filesize/filesize*100:.3f}%")
+
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument("souce_path", nargs="+")
+parser.add_argument("--overwrite_old", default=False, action="store_true")
+
+args = parser.parse_args()
+source_path = args.souce_path
+if isinstance(source_path, list):
+    for path in source_path:
+        compress_image(path, args.overwrite_old)
+else:
+    assert isinstance(source_path, str), f"Expected a single path: {souce_path}"
+    compress_image(source_path, args.overwrite_old)
+
