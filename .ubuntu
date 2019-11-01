@@ -1,3 +1,5 @@
+rm ~/.bashrc
+rm ~/.profile
 ln -sv ~/dotfiles/.profile ~/.profile
 ln -sv ~/dotfiles/.bashrc ~/.bashrc
 ln -sv ~/dotfiles/.inputrc ~
@@ -11,3 +13,4 @@ chmod +x ~/dotfiles/bin/matplotlib_remove_borders
 chmod +x ~/dotfiles/bin/open
 chmod +x bin/latex2txt
 chmod +x bin/biblatex_check
+chmod +x bin/to_png
