@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+import os
+import sys
+import argparse
+
+def yes_or_no(question):
+    reply = str(input(question+' (y/n): ')).lower().strip()
+    if reply[0] == 'y':
+        return True
+    if reply[0] == 'n':
+        return False
+    else:
+        return yes_or_no("Uhhhh... please enter ")
+
+parser = argparse.ArgumentParser()
+parser.add_argument("username", default="haakohu")
+args = parser.parse_args()
+keyword = args.username
+
+containers_to_remove = []
+for line in os.popen("docker ps -a ").readlines():
+    if "Exited" not in line and "Created" not in line:
+        continue
+
+    container_name = line.strip().split(" ")[-1]
+    if container_name.startswith(keyword):
+        print(container_name)
+        containers_to_remove.append(container_name)
+
+
+print(containers_to_remove)
+if yes_or_no(f'Remove the containers?'):
+    for container_name in containers_to_remove:
+        os.system(f"docker rm {container_name}")
