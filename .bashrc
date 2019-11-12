@@ -1,6 +1,10 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+# CUDA Config - ~/.bashrc
+export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64\
+                         ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 # If not running interactively, don't do anything
 case $- in
@@ -115,23 +119,19 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
-export CUDA_HOME=/usr/local/cuda
-export PATH="/usr/local/cuda/bin:$PATH"
-# added by Anaconda3 2018.12 installer
-# >>> conda init >>>
+
+# >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/haakohu/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+__conda_setup="$('/home/haakohu/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    \eval "$__conda_setup"
+    eval "$__conda_setup"
 else
     if [ -f "/home/haakohu/anaconda3/etc/profile.d/conda.sh" ]; then
         . "/home/haakohu/anaconda3/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
     else
-        \export PATH="/home/haakohu/anaconda3/bin:$PATH"
+        export PATH="/home/haakohu/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
-# <<< conda init <<<
+# <<< conda initialize <<<
 source ~/dotfiles/.alias
