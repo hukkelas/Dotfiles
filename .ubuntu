@@ -14,3 +14,4 @@ chmod +x ~/dotfiles/bin/open
 chmod +x bin/latex2txt
 chmod +x bin/biblatex_check
 chmod +x bin/to_png
+chmod +x bin/dpsa

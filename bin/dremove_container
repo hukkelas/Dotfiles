@@ -28,7 +28,6 @@ for line in os.popen("docker ps -a ").readlines():
         containers_to_remove.append(container_name)
 
 
-print(containers_to_remove)
 if yes_or_no(f'Remove the containers?'):
     for container_name in containers_to_remove:
         os.system(f"docker rm {container_name}")

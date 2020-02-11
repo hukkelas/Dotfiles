@@ -23,14 +23,16 @@ alias egrep='egrep --color=auto'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+# enable aliases to be watch'ed
+alias watch='watch '
 
 
 # docker
-alias dpsa='docker ps -a | grep haakohu'
+alias wdpsa="watch --color dpsa"
 alias dl="docker logs "
 alias drm="docker rm "
 alias dk="docker kill"
-
+alias ds="docker stop"
 
 # shortcuts
 alias ns="nvidia-smi"
