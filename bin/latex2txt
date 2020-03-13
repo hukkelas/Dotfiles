@@ -42,19 +42,23 @@ for line in lines:
 
     # Find and replace figures with "Figure 1"
     # Assuming each fig starts with "fig"
+    print(line)
     try:
         index1 = line.index("fig:")
+        if index1 == -1: continue
+        
         index2 = line[index1:].index(" ")
+        print("HUE:",line[index1:index1+index2])
         if index2 == -1:
             index2 = line[index1:].index(".")
-        if index1 != -1:
+        if index2 != -1:
             line = line[:index1] + "Figure 1" + line[index1+index2:]
             #line[index1:index1+index2] = "Figure 1"
         final_lines.append(line + " ")
     except ValueError:
         final_lines.append(line + " ")
         continue
-
+print("="*80)
 final_result = "".join(final_lines)
 print(final_result)
 #os.system("echo '{}' | xclip -selection clipboard".format(final_result))

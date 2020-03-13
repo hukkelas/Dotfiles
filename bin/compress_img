@@ -24,9 +24,6 @@ def compress_image(source_path, overwrite_old):
     else:
         target_path = source_path
 
-
-    
-
     im.save(target_path, optimize=True, quality=50) 
     new_image_size = Image.open(target_path).size
 

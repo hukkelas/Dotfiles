@@ -1,0 +1,66 @@
+#!/usr/bin/env python
+import argparse
+import pathlib
+import moviepy.editor as mp
+import typing
+import numpy as np
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument("files", nargs="+")
+
+
+args = parser.parse_args()
+
+filepaths = [pathlib.Path(x) for x in args.files]
+assert len(filepaths) > 1
+target_path = filepaths[0]
+
+target_path = target_path.parent.joinpath(f"{target_path.stem}_concatenated{target_path.suffix}")
+print("Saving to:", target_path)
+videos = [mp.VideoFileClip(str(filepath)) for filepath in filepaths]
+
+
+def concatenate(videos: typing.List[mp.VideoFileClip], axis: int, target_path: pathlib.Path):
+    fps = videos[0].fps
+    duration = videos[0].duration
+    frames = []
+    #num_frames = 
+    num_frames = None
+    for video in videos:
+        #assert video.fps == fps, f"Original FPS: {fps}. VIdeo FPS: {video.fps}"
+        #assert video.duration == duration, f"Original duration: {duration}, video duration: {video.duration}"
+        frames.append(list(video.iter_frames()))
+        if num_frames is None:
+            num_frames = len(frames[-1])
+        else:
+            num_frames = min(num_frames, len(frames[-1]))
+        print(len(frames[-1]))
+    
+    def make_frame(t):
+        frame_idx = int(round(t*fps))
+        frame_idx = min(frame_idx, num_frames-1)
+        relevant_frames = [video_frames[frame_idx] for video_frames in frames]
+        frame = np.concatenate(relevant_frames, axis=axis)
+        return frame
+    
+    new_video = mp.VideoClip(make_frame)
+    fps = num_frames / duration
+    new_video.duration = duration
+    new_video.fps = fps
+    new_video.audio = videos[0].audio
+    new_video.write_videofile(
+        str(target_path)
+    )
+
+concatenate(
+    videos,
+    0,
+    target_path
+)
+
+
+
+
+
+    
