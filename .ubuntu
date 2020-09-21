@@ -15,3 +15,5 @@ chmod +x bin/latex2txt
 chmod +x bin/biblatex_check
 chmod +x bin/to_png
 chmod +x bin/dpsa
+chmod +x bin/dk
+chmod +x bin/dl

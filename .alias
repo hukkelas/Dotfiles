@@ -29,9 +29,7 @@ alias watch='watch '
 
 # docker
 alias wdpsa="watch --color dpsa"
-alias dl="docker logs "
 alias drm="docker rm "
-alias dk="docker kill"
 alias ds="docker stop"
 
 # shortcuts
