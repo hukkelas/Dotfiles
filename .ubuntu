@@ -18,3 +18,5 @@ chmod +x bin/cut_image
 chmod +x bin/concatenate_video
 chmod +x bin/slice_video
 chmod +x bin/dpsa
+chmod +x bin/dk
+chmod +x bin/dl

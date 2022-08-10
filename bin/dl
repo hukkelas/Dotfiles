@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+
+import subprocess
+import argparse
+from termcolor import colored
+
+parser = argparse.ArgumentParser()
+parser.add_argument("docker_name")
+args = parser.parse_args()
+
+keys_to_print = ["Image", "Status","RunningFor",  "Names"]
+query = "docker ps -a  --format '{{.Names}}'"
+wanted_idx = [1, 3, 4, 5, 6]
+
+values = {
+    "Train": "",
+    "GPU": ""
+}
+output = subprocess.check_output(query, shell=True).decode().split("\n")
+output = [x for x in output if args.docker_name in x]
+assert len(output) == 1, output
+
+out = subprocess.check_output(f"docker logs {output[0]}", shell=True).decode()
+print(out)

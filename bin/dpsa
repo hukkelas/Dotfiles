@@ -7,36 +7,76 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--filter_name", default=True, action="store_false")
 args = parser.parse_args()
 
-keys_to_print = ["Image", "Status", "Names"]
+keys_to_print = ["Image", "Status","RunningFor",  "Names"]
 query = "".join("{{" + f".{key}" + "}}\t" for key in keys_to_print)
 query = f"docker ps -a  --format '{query}'"
 wanted_idx = [1, 3, 4, 5, 6]
 
 
 def pretty_print(to_print):
-    to_print = "\t".join(to_print)
+    to_print = "".join(to_print)
     print(to_print)
 
 
-pretty_print([f"{'Image':<35}", f"{'Status':<25}", "Names"])
+pretty_print([f"{'IsTrain':<8}", f"{'GPU':<8}" f"{'Image':<12}", f"{'Status':<30}", f"{'started':<18}", f"{'Names':50}",])
+values = {
+    "Train": "",
+    "GPU": ""
+}
 output = subprocess.check_output(query, shell=True)
+num_gpu_jobs = 0
 for line in output.decode().strip().split("\n"):
     line = line.split("\t")
-    values = {}
+    values = {"Train": "", "GPU": f"{-1:<8}"}
+    
     for idx, key in enumerate(keys_to_print):
-        values[key] = line[idx]
+        values[key] = line[idx].strip()
     if args.filter_name:
         if "haakohu" not in values["Names"]:
             continue
         name = values["Names"]
-        name = name.replace("haakohu", "")
-        values["Names"] = colored("haakohu", "green") + name
-    if "Up" not in values["Status"]:
-        values["Image"] = colored(f"{values['Image']:<35}", "red")
-        values["Status"] = colored(f"{values['Status']:<25}", "red")
+        name = name.replace("haakohu_", "")
+        is_train = "_train_" in values["Names"]
+        values["Train"] = colored("No      ", "blue")
+#        values["Names"] = colored("haakohu", "green") + name
+        
+    if "GPU" in name:
+        start = name.index("GPU")
+        gpu_part = name[start+3:]
+        values["GPU"] = f'{",".join(gpu_part.split("_")):<8}'
+        name = name[:start]
+        num_gpu_jobs += 1
 
+    if is_train:
+#        values["Train"] = f'{values["Train"]:<20}'
+        values["Train"] = colored("Yes     ", "green")
+#        values["Train"] = f'{:<}'
+
+        name = name.replace("_train_", "")
+    else:
+        name = name.replace("_other_", "")
+#        name = name.replace("GPU", "")
+    values["Names"] = name
+    if "nvcr.io/nvidia/tensorflow" in values["Image"]:
+        values["Image"] = "tensorflow"
+    if "pytorch" in values["Image"]:
+        values["Image"] = "pytorch"
+    if "Up" not in values["Status"]:
+        values["Image"] = f"{values['Image']:<12}"
+        values["Image"] = colored(values["Image"], "red")
+#        
+        status = values["Status"]
+        if "Exited" in status:
+            status = status.replace("Exited", "")
+
+#        status = colored(status, "red")
+#        values["Status"] = f"{status:<30}"
+    values["RunningFor"] = values["RunningFor"].replace("About a", "")
     sizes = [35, 20, 20, 50]
     keys = list(values.keys())
-    values["Image"] = f"{values['Image']:<35}"
-    values["Status"] = f"{values['Status']:<25}"
+    values["Image"] = f"{values['Image']:<12}"
+    values["Status"] = f"{values['Status']:<30}"
+    values["RunningFor"] = f"{values['RunningFor']:<18}"
+    values["Names"] = f"{values['Names']:<50}"
     pretty_print(values.values())
+print("Num GPU jobs:", num_gpu_jobs)
