@@ -3,49 +3,56 @@ import argparse
 import pathlib
 import moviepy.editor as mp
 import typing
+import cv2
 import numpy as np
 
 parser = argparse.ArgumentParser()
 
 parser.add_argument("files", nargs="+")
+parser.add_argument("-n", "--nrow", type=int, default=1)
+parser.add_argument("-t", "--target_path")
+parser.add_argument("-d", "--description", default=None, nargs="+")
 
 
 args = parser.parse_args()
 
 filepaths = [pathlib.Path(x) for x in args.files]
 assert len(filepaths) > 1
-target_path = filepaths[0]
+target_path = pathlib.Path(args.target_path)
 
 target_path = target_path.parent.joinpath(f"{target_path.stem}_concatenated{target_path.suffix}")
 print("Saving to:", target_path)
 videos = [mp.VideoFileClip(str(filepath)) for filepath in filepaths]
 
 
-def concatenate(videos: typing.List[mp.VideoFileClip], axis: int, target_path: pathlib.Path):
+def concatenate(videos: typing.List[mp.VideoFileClip], target_path: pathlib.Path):
     fps = videos[0].fps
     duration = videos[0].duration
-    frames = []
-    #num_frames = 
-    num_frames = None
-    for video in videos:
-        #assert video.fps == fps, f"Original FPS: {fps}. VIdeo FPS: {video.fps}"
-        #assert video.duration == duration, f"Original duration: {duration}, video duration: {video.duration}"
-        frames.append(list(video.iter_frames()))
-        if num_frames is None:
-            num_frames = len(frames[-1])
-        else:
-            num_frames = min(num_frames, len(frames[-1]))
-        print(len(frames[-1]))
-    
+
     def make_frame(t):
-        frame_idx = int(round(t*fps))
-        frame_idx = min(frame_idx, num_frames-1)
-        relevant_frames = [video_frames[frame_idx] for video_frames in frames]
-        frame = np.concatenate(relevant_frames, axis=axis)
+        relevant_frames = [v.get_frame(t) for v in videos]
+        
+        if args.description is not None:
+            description = args.description
+            assert len(description) == len(relevant_frames)
+            relevant_frames = [
+                cv2.putText(f, description[i], (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 0), 8)
+                for i, f in enumerate(relevant_frames)
+            ]
+            relevant_frames = [
+                cv2.putText(f, description[i], (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 6)
+                for i, f in enumerate(relevant_frames)
+            ]
+        ncol = len(relevant_frames) // args.nrow
+        cols =[]
+        for r in range(args.nrow):
+            ims = [relevant_frames[i + r*ncol] for i in range(ncol)]
+            row = np.concatenate(ims, axis=1)
+            cols.append(row)
+        frame = np.concatenate(cols, axis=0)
         return frame
-    
+
     new_video = mp.VideoClip(make_frame)
-    fps = num_frames / duration
     new_video.duration = duration
     new_video.fps = fps
     new_video.audio = videos[0].audio
@@ -55,7 +62,6 @@ def concatenate(videos: typing.List[mp.VideoFileClip], axis: int, target_path: p
 
 concatenate(
     videos,
-    0,
     target_path
 )
 
