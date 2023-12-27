@@ -1,0 +1,246 @@
+cat .zshenv
+mv dotfiles .dotfiles
+ls .dotfiles/zsh
+ls $ZDOTDIR
+zsh
+$OSTYPE
+cd ntnu
+cd
+cd git/deep_privacy2
+git status
+ssh 192.168.50.80
+ls
+..
+cd 
+d
+clear
+pwd
+ls 
+ls -lta
+la
+l
+bash
+source ~/.dotfiles/zsh/.zshrc
+exit
+source ~/.dotfiles/zsh/.zshrc
+exit
+exit
+ls
+ls
+exit
+brew
+exit
+/bin/bash
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.zshrc
+ls
+python3
+which python
+which python3
+conda
+find 
+find /
+find / | grep ana
+find / | grep anac
+find / | grep conda
+find / | grep anaconda
+brew show conda
+brew
+ls /usr/local/bin
+cat .bash_profile
+echo 'PATH="/usr/local/bin:$PATH"' >> ~/.zshenv
+brew
+brew
+echo 'PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
+find / | grep brew 
+ls /opt/homebrew/bin
+echo "export PATH=/opt/homebrew/bin:$PATH" >> ~/.bash_profile && source ~/.bash_profile
+brew
+brew info conda
+l
+ll
+l
+ls /usr
+find / | grep anaconda
+sudo find / | grep anaconda
+sudo find / | grep conda
+sudo find / | grep bin/conda
+sudo find / | grep bin/conda\
+pt
+sudo find /opt | grep conda
+ls /opt/homebrew/Caskroom/miniforge/base/bin/conda init zsh
+/opt/homebrew/Caskroom/miniforge/base/bin/conda init zsh
+exit
+conda
+ls /opt
+ls /opt/homebrew
+ls /Users/haakohu
+~/opt
+ls ~/opt
+exit
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.zshrc
+conda list
+cd git/EdgeSAM
+d
+source ~/.dotfiles/zsh/.zshrc
+d
+d 0
+cd ..
+..
+d
+d 2
+d 
+2
+d
+21
+d
+1
+d
+0
+2
+1
+2
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.zshrc
+cd
+cd .dotfiles/zsh
+mkdir plugins
+cd plugins
+l
+git submodule add https://github.com/zsh-users/zsh-syntax-highlighting
+git status
+cd zsh-syntax-highlighting
+git status
+l
+..
+..
+source ~/.dotfiles/zsh/.zshrc
+ls
+ls 
+ls -ltah
+source ~/.dotfiles/zsh/.zshrc
+bd .dotfiles
+brew install fzf
+ls /opt/homebrew/bin
+source ~/.dotfiles/zsh/.zshrc
+brew
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.zshrc
+brew
+brew install fzf
+brew reinstall fzf
+/usr/local/opt/fzf/install
+/opt/homebrew/opt/fzf/install
+/opt/homebrew/opt/fzf/install zsh
+/opt/homebrew/opt/fzf/install --no-bash
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.zshrc
+ls 
+clear
+l
+ls startup_script.sh
+l
+l setup.sh
+l -ltah 
+ls
+pwd
+clear
+pwd
+ls ~/opt
+pwd
+clear
+l
+clear
+tmux source ~/.dotfiles/tmux/.tmux.conf
+tmux source ~/.dotfiles/tmux/.tmux.conf
+tmux source $DOTFILES/tmux/.tmux.conf
+cd git/deep_privacy2
+l
+clear
+mv ~/.tmux.conf ~/.dotfiles/tmux
+ln -s "$HOME/.dotfiles/tmux/.tmux.conf" "$HOME/.tmux.conf"\
+
+tmux
+tmux
+tmux
+brew cask install font-fontawesome
+brew install --cask font-fontawesome
+brew tap homebrew/cask-fonts
+brew install --cask font-fontawesome
+tmux
+cat ~/.zsh_history
+tmux
+tmux
+tmux
+ls
+clear
+pwd
+clear
+l
+ll
+fdf
+l
+clear
+tmux
+vim .vimrc
+nvim
+rm -r .local/share/nvim
+rm -rf .local/share/nvim
+rm -rf .local/share/nvim_astro
+rm -rf .cache/nvim
+rm -rf .cache/nvim_astro
+nvim
+nvim
+rm -rf .cache/nvim_astro
+rm -rf .cache/nvim
+rm -rf .local/share/nvim
+rm -r .local/share/nvim
+rm -rf .dotfiles/nvim/*
+nvim
+rm -rf .dotfiles/nvim/*
+rm -r .local/share/nvim
+rm -rf .local/share/nvim
+rm -rf .local/state
+rm -rf .cache/nvim
+rm -rf .config/nvim_astro
+rm -rf .config/nvim
+nvim
+cat .tmux.conf
+rm -rf .tmux
+tmux
+\:q
+nvim
+brew install font-hack-nerd-font
+git clone https://github.com/LazyVim/starter ~/.dotfiles/nvim
+cd .dotfiles
+rm -rf nvim/.git
+code . 
+nvim
+sd
+l
+NVIM_APPNAME .dotfiles/nvim nvim
+nvim
+NVIM_APP_NAME=.dotfiles/nvim nvim
+NVIM_APP_NAME=.dotfiles/nvim nvim
+NVIM_APP_NAME=.dotfiles/nvim nvim
+cd git/deep_privacy2
+NVIM_APP_NAME=.dotfiles/nvim nvim
+NVIM_APP_NAME=.dotfiles/nvim nvim . 
+clear
+tmux
+brew search '/font-.*-nerd-font/' | awk '{ print $1 }' | xargs -I{} brew install --cask {} || true
+tmux source ~/.tmux.conf
+cd git/deep_privacy2
+l
+clear
+cd
+nvim
+exit

@@ -1,0 +1,59 @@
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias -- -="cd -"
+
+alias ls='ls --color=auto'
+alias l='ls -l'
+alias ll='ls -lahF'
+alias lls='ls -lahFtr'
+alias la='ls -A'
+alias lc='ls -CF'
+
+
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -iv'
+alias la='ls -alh'
+
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+
+#Git shortcuts
+alias g="git"
+alias gc="git commit -m"
+alias gl="git log --oneline"
+alias ga="git add"
+alias gp="git pull"
+alias gs="git status"
+
+# Always enable colored `grep` output
+# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+# enable aliases to be watch'ed
+alias watch='watch '
+
+
+# docker
+alias wdpsa="watch --color dpsa"
+alias drm="docker rm "
+alias ds="docker stop"
+
+# shortcuts
+alias ns="nvidia-smi"
+
+
+alias pg='ping 8.8.8.8'
+
+
+# tmux
+
+alias tmuxk='tmux kill-session -t'
+alias tmuxa='tmux attach -t'
+alias tmuxl='tmux list-sessions'
