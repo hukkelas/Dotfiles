@@ -30,5 +30,4 @@ o.splitright = true
 require("custom.lazy")
 require("custom.remap")
 
-vim.cmd "colorscheme monokai_pro"
-
+vim.cmd "colorscheme catppuccin-mocha"

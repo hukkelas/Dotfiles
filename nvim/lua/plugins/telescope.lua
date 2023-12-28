@@ -57,6 +57,7 @@ return {
             map("n", "<leader>fG", tsp.current_buffer_fuzzy_find, "Search current buffer")
             map("n", "<leader>fD", tsp.diagnostics, "Diagnostics")
             map("n", "<leader>u", "<cmd>Telescope undo<cr>", "Telescope undo")
+            map({"n", "v"},"<leader>fT", ":Telescope colorscheme <cr>", "Pick colorscheme")
 
 
             map("n", "<C-p>", tsp.keymaps, "Search keymaps")
