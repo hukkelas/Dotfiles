@@ -3,8 +3,8 @@ export ZDOTDIR=$DOTFILES/zsh/
 export NVIM_APP_NAME=$DOTFILES/nvim 
 export XDG_CONFIG_HOME=$DOTFILES
 
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 
 # zsh
