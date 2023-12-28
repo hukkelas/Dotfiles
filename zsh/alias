@@ -57,3 +57,4 @@ alias pg='ping 8.8.8.8'
 alias tmuxk='tmux kill-session -t'
 alias tmuxa='tmux attach -t'
 alias tmuxl='tmux list-sessions'
+alias tmuxo=tmux-sessionizer $1

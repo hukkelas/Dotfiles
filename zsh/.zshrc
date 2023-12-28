@@ -69,4 +69,7 @@ source $ZDOTDIR/plugins/bd.zsh
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 # FZF source
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-if [ "$TMUX" = "" ]; then tmux; fi
+if [ -z "$TMUX" ]
+then
+    tmux attach -t login || tmux new -s login
+fi
