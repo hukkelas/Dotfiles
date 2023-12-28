@@ -21,6 +21,7 @@ o.wildmenu = true
 o.wildignore = "*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx"
 o.showmatch = true
 o.smartindent = true
+o.number = true
 
 -- Split to the left/below 
 o.splitbelow = true

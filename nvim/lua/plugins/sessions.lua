@@ -10,12 +10,12 @@ return {
             {
                 -- add group
                 ["<leader>"] = {
-                    p = { name = "Session" },
+                    P = { name = "Session" },
                 }
             }
         )
-        map({ "n", "v" }, "<leader>pl", ":SessionManager load_session<cr>", "List sessions")
-        map({ "n", "v" }, "<leader>ps", ":SessionManager save_current_session<cr>", "Save session")
+        map({ "n", "v" }, "<leader>Pl", ":SessionManager load_session<cr>", "List sessions")
+        map({ "n", "v" }, "<leader>Ps", ":SessionManager save_current_session<cr>", "Save session")
         require('session_manager').setup({
             sessions_dir = Path:new(vim.fn.stdpath('data'), 'sessions'), -- The directory where the session files will be saved.
             autoload_mode = config.AutoloadMode.CurrentDir,              -- Define what to do when Neovim is started without arguments. Possible values: Disabled, CurrentDir, LastSession

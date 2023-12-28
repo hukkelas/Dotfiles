@@ -12,6 +12,9 @@ return {
                 section_separators = "",
             },
             sections = {
+                lualine_a = {
+                    'mode'
+                },
                 lualine_x = {
                     {
                         require("noice").api.status.message.get_hl,

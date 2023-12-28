@@ -34,7 +34,7 @@ return {
             -- Neodev setup before LSP config
             require("neodev").setup()
 
-            -- Turn on LSP status information
+            
             require("fidget").setup()
 
             -- Set up cool signs for diagnostics
@@ -68,7 +68,6 @@ return {
             local on_attach = function(client, bufnr)
                 local lsp_map = require("helpers.keys").lsp_map
 
-                lsp_map("<leader>sr", vim.lsp.buf.rename, bufnr, "Rename symbol")
                 lsp_map("<leader>sa", vim.lsp.buf.code_action, bufnr, "Code action")
                 lsp_map("<leader>sd", vim.lsp.buf.type_definition, bufnr, "Type definition")
                 lsp_map("<leader>se", vim.diagnostic.open_float, bufnr, "Show error")
