@@ -3,26 +3,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 source $ZDOTDIR/alias
-
+# CONDA INIT
+conda_path="$ZDOTDIR/conda_init.zsh"
+if [ -f "$conda_path" ]; then
+  source "$conda_path"
+else
+  echo "File '$conda_path' does not exist."
+fi
 
 # ZSH options
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 unsetopt HIST_SAVE_NO_DUPS       # Write a duplicate event to the history file
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 # Completion
 source $ZDOTDIR/completion.zsh
 
