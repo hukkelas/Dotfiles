@@ -11,6 +11,18 @@ return {
         },
         config = function()
             require("telescope").setup({
+                extensions = {
+                    undo = {
+                        mappings = {
+                        n = {
+                            ["<C-r>"] = require("telescope-undo.actions").restore,
+                            ["<C-cr>"] = require("telescope-undo.actions").restore,
+
+                        }
+                        }
+                    }
+
+                },
                 defaults = {
                     mappings = {
                         i = {
