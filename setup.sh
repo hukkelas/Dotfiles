@@ -4,7 +4,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install fzf
   /opt/homebrew/opt/fzf/install --no-bash
 else
-  apt update && apt install -y zsh
+  apt update && apt install -y zsh curl
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
   chmod u+x nvim.appimage
   ./nvim.appimage
