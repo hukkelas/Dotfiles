@@ -4,7 +4,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install fzf
   /opt/homebrew/opt/fzf/install --no-bash
 else
-  apt update && apt install -y neovim
+  apt update && apt install -y neovim zsh
 
   # Check if fzf is already installed
   fzf_dir=~/.fzf
