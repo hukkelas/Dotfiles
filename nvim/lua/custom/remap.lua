@@ -4,8 +4,8 @@ map("n", "<leader>e", ":vsplit<CR>", "Vertical split")
 
 map("n", "<leader>o", ":split<CR>", "Horizontal split")
 map("n", "<C-q>", ":q<CR>", "close buffer")
-map("n", "<leader>q", ":q<CR>", "close buffer")
-map("n", "<leader>w", ":bd<CR>", "close buffer")
+map("n", "<leader>w", ":q<CR>", "close window")
+map("n", "<leader>q", ":bd<CR>", "close buffer")
 map("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", "Buffer 1")
 map("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", "Buffer 2")
 map("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", "Buffer 3")
@@ -14,6 +14,11 @@ map("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", "Buffer 5")
 map("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", "Buffer 6")
 map("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", "Buffer 7")
 
+-- Window resize 
+-- map({"n", "v"}, "<A-h>", ":vertical resize -10<cr>", "Resize -10")
+-- map({"n", "v"}, "<A-l>", ":vertical resize +10<cr>", "Resize -+10")
+-- map({"n", "v"}, "<M-h>", ":vertical resize -10<cr>", "Resize -10")
+-- map({"n", "v"}, "<M-l>", ":vertical resize +10<cr>", "Resize -+10")
 
 
 -- Key cursor in the middle
@@ -56,7 +61,8 @@ wk.register(
 -- Toggle
 map({ "n", "v" }, "<leader>te", ":Neotree toggle<cr>", "Toggle sidebar")
 map({ "n", "v" }, "<leader>tt", ":TroubleToggle<cr>", "Trouble toggle")
-map({ "n", "v" }, "<leader>tz", ":ZenMode <cr>", "ZenMode")
+map({ "n", "v" }, "<leader>z", ":ZenMode <cr>", "ZenMode")
+map({ "n", "v" }, "<leader>tf", ":FocusToggle <cr>", "Toggle focus")
 
 -- Git
 map({ "n", "v" }, "<leader>gB", ":Telescope git_branches<cr>", "View branches")

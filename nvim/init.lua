@@ -31,3 +31,4 @@ require("custom.lazy")
 require("custom.remap")
 
 vim.cmd "colorscheme catppuccin-mocha"
+vim.cmd "FocusDisable"

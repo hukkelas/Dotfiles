@@ -6,6 +6,5 @@
 - neo-scroll?
 - https://github.com/stevearc/aerial.nvim
 -https://github.com/phaazon/hop.nvim
-
-
+https://github.com/piersolenski/telescope-import.nvim
 
