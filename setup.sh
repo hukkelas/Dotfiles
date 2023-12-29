@@ -9,7 +9,7 @@ else
   # Check if fzf is already installed
   fzf_dir=~/.fzf
   if [[ ! -d $fzf_dir ]]; then
-    apt install -y go
+    apt install -y golang-go
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
   else
