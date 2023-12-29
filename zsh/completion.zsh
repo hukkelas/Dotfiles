@@ -14,6 +14,7 @@
 # Load more completions
 fpath=($DOTFILES/zsh/plugins/zsh-completions/src $fpath)
 fpath=($DOTFILES/zsh/plugins/completion/conda-zsh-completion/ $fpath)
+fpath=($DOTFILES/zsh/plugins/completion/ $fpath)
 # Should be called before compinit
 zmodload zsh/complist
 
@@ -32,6 +33,7 @@ bindkey -M menuselect '^xu' undo                           # Undo
 
 autoload -U compinit; compinit
 compinit conda
+compinit docker
 _comp_options+=(globdots) # With hidden files
 
 # Only work with the Zsh function vman
