@@ -32,3 +32,4 @@ require("custom.remap")
 
 vim.cmd "colorscheme catppuccin-mocha"
 vim.cmd "FocusDisable"
+require("flash").toggle(true) 

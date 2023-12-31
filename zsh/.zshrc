@@ -64,15 +64,7 @@ source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.z
 
 if [ -z "$TMUX" ];
 then
-    echo "NOT TMUX SESSIONS"
     tmux attach -t login || tmux new -s login
 else
-    echo "TMUX SESSION"
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        echo "Source MACOS"
-        tmux source ${DOTFILES}/tmux/.tmux.macos.conf
-    else
-        tmux source ${DOTFILES}/tmux/.tmux.linux.conf
-    fi
 fi
 

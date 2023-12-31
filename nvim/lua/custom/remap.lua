@@ -31,6 +31,10 @@ map("n", "<C-u>", "<C-u>zz", "Jump half page up")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 map("x", "<leader>p", [["_dP]], "Paste without yank")
+
+map({"v"}, "<", "<gv", "Indent without loosing selection")
+map({"v"}, ">", ">gv", "Indent without loosing selection")
+
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
@@ -67,6 +71,8 @@ map({ "n", "v" }, "<leader>tf", ":FocusToggle <cr>", "Toggle focus")
 -- Git
 map({ "n", "v" }, "<leader>gB", ":Telescope git_branches<cr>", "View branches")
 map({ "n", "v" }, "<leader>gC", ":Telescope git_commits<cr>", "View commits")
+map({ "n", "v" }, "<leader>gc", require("telescope.builtin").git_bcommits, "View commits for current buffer")
+
 map({ "n", "v" }, "<leader>gp", ":Gitsigns preview_hunk_inline<cr>", "View commits")
 map({ "n", "v" }, "<leader>gg", ":Git<cr>", "Git status 2")
 local toggle_diffview = function()
