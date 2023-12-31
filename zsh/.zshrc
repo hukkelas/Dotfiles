@@ -61,7 +61,18 @@ source $ZDOTDIR/plugins/bd.zsh
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 # FZF source
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-if [ -z "$TMUX" ]
+
+if [ -z "$TMUX" ];
 then
+    echo "NOT TMUX SESSIONS"
     tmux attach -t login || tmux new -s login
+else
+    echo "TMUX SESSION"
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "Source MACOS"
+        tmux source ${DOTFILES}/tmux/.tmux.macos.conf
+    else
+        tmux source ${DOTFILES}/tmux/.tmux.linux.conf
+    fi
 fi
+
