@@ -8,17 +8,18 @@ return {
             -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
             { "debugloop/telescope-undo.nvim" },
+            { "gbprod/yanky.nvim" }
         },
         config = function()
             require("telescope").setup({
                 extensions = {
                     undo = {
                         mappings = {
-                        n = {
-                            ["<C-r>"] = require("telescope-undo.actions").restore,
-                            ["<C-cr>"] = require("telescope-undo.actions").restore,
+                            n = {
+                                ["<C-r>"] = require("telescope-undo.actions").restore,
+                                ["<C-cr>"] = require("telescope-undo.actions").restore,
 
-                        }
+                            }
                         }
                     }
 
@@ -36,6 +37,7 @@ return {
             -- Enable telescope fzf native, if installed
             pcall(require("telescope").load_extension, "fzf")
             require("telescope").load_extension("undo")
+            require("telescope").load_extension("yank_history")
 
             local map = require("helpers.keys").map
             local tsp = require("telescope.builtin")
@@ -57,7 +59,8 @@ return {
             map("n", "<leader>fG", tsp.current_buffer_fuzzy_find, "Search current buffer")
             map("n", "<leader>fD", tsp.diagnostics, "Diagnostics")
             map("n", "<leader>u", "<cmd>Telescope undo<cr>", "Telescope undo")
-            map({"n", "v"},"<leader>fT", ":Telescope colorscheme <cr>", "Pick colorscheme")
+            map({ "n", "v" }, "<leader>fT", ":Telescope colorscheme <cr>", "Pick colorscheme")
+            map({"n", "v"}, "<leader>fy", tsp.yank_history, "Yank history")
 
 
             map("n", "<C-p>", tsp.keymaps, "Search keymaps")

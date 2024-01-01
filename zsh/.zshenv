@@ -16,6 +16,8 @@ export SAVEHIST=10000                   # Maximum events in history file
 
 export TMUXP_CONFIGDIR="$DOTFILES/tmuxp"
 
+# python
+export FIFTYONE_DO_NOT_TRACK=1
 
 # Man pages
 export MANPAGER='nvim +Man!'
@@ -49,5 +51,8 @@ export FZF_DEFAULT_OPTS="--height 60% \
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -n 10'"
 export FZF_COMPLETION_DIR_COMMANDS="cd pushd rmdir tree ls"
 
-
-export PATH="$DOTFILES/bin:$PATH"PATH="/usr/local/bin:$PATH"
+# C++
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    source $ZDOTDIR/.ubuntu.env
+fi

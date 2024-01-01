@@ -13,6 +13,9 @@ map("n", "<leader>4", ":BufferLineGoToBuffer 4<CR>", "Buffer 4")
 map("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", "Buffer 5")
 map("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", "Buffer 6")
 map("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", "Buffer 7")
+map("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", "Buffer 8")
+map("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", "Buffer 9")
+map("n", "<leader>0", ":BufferLineGoToBuffer 10<CR>", "Buffer 10")
 
 -- Window resize 
 -- map({"n", "v"}, "<A-h>", ":vertical resize -10<cr>", "Resize -10")

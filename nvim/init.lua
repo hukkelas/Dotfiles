@@ -1,10 +1,9 @@
-
 local o = vim.opt
 o.termguicolors = true
-o.cursorline = true
 o.shiftwidth = 4
 o.tabstop = 4
 o.expandtab = true
+
 o.backup = false
 o.scrolloff = 10
 o.wrap = false
@@ -23,7 +22,7 @@ o.showmatch = true
 o.smartindent = true
 o.number = true
 
--- Split to the left/below 
+-- Split to the left/below
 o.splitbelow = true
 o.splitright = true
 
@@ -31,5 +30,13 @@ require("custom.lazy")
 require("custom.remap")
 
 vim.cmd "colorscheme catppuccin-mocha"
-vim.cmd "FocusDisable"
-require("flash").toggle(true) 
+require("flash").toggle(true)
+
+
+require("focus").setup({
+    enable = true,
+
+    ui = {
+        signcolumn = false
+    }
+})
