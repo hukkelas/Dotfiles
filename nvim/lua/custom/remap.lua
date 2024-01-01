@@ -75,6 +75,8 @@ map({ "n", "v" }, "<leader>tf", ":FocusToggle <cr>", "Toggle focus")
 map({ "n", "v" }, "<leader>gB", ":Telescope git_branches<cr>", "View branches")
 map({ "n", "v" }, "<leader>gC", ":Telescope git_commits<cr>", "View commits")
 map({ "n", "v" }, "<leader>gc", require("telescope.builtin").git_bcommits, "View commits for current buffer")
+map({"n", "v"}, "<leader>gmc", ":Git commit -m ", "Git make commit")
+map({"n", "v"}, "<leader>gmP", ":Git push <cr>", "Git push")
 
 map({ "n", "v" }, "<leader>gp", ":Gitsigns preview_hunk_inline<cr>", "View commits")
 map({ "n", "v" }, "<leader>gg", ":Git<cr>", "Git status 2")
