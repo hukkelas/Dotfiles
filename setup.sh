@@ -5,10 +5,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install fzf
   /opt/homebrew/opt/fzf/install --no-bash
 else
-  apt update && apt install -y zsh curl tmux gcc cmake unzip gettext
+  sudo apt update && sudo apt install -y zsh curl tmux gcc cmake unzip gettext
     # Check the system architecture
    git clone https://github.com/neovim/neovim.git --branch v0.9.4 --single-branch
-   cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && make install 
+   cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install 
 
   # Check if fzf is already installed
   fzf_dir=~/.fzf

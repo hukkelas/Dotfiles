@@ -34,7 +34,7 @@ require("flash").toggle(true)
 
 
 require("focus").setup({
-    enable = true,
+    enable = false,
 
     ui = {
         signcolumn = false

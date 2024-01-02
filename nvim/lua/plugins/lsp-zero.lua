@@ -34,7 +34,7 @@ return {
             -- Neodev setup before LSP config
             require("neodev").setup()
 
-            
+
             require("fidget").setup()
 
             -- Set up cool signs for diagnostics
@@ -125,7 +125,12 @@ return {
             })
             require("lspconfig")["clangd"].setup({
                 on_attach = on_attach,
-                capabilities = capabilities
+                capabilities = capabilities,
+                server = {
+                    cmd = { "clangd",
+                        "--query-driver='/usr/bin/gcc'",
+                    },
+                }
             })
         end,
     },
