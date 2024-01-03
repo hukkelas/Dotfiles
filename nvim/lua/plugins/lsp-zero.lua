@@ -71,9 +71,12 @@ return {
                 lsp_map("<leader>sa", vim.lsp.buf.code_action, bufnr, "Code action")
                 lsp_map("<leader>sd", vim.lsp.buf.type_definition, bufnr, "Type definition")
                 lsp_map("<leader>se", vim.diagnostic.open_float, bufnr, "Show error")
-                lsp_map("<leader>sl", require("telescope.builtin").lsp_document_symbols, bufnr,
-                    "Document symbols")
-
+                lsp_map("<leader>sl", function()
+                        require("telescope.builtin").lsp_document_symbols({symbol_width=50})
+                    end,
+                    bufnr,
+                    "Document symbols"
+                )
                 lsp_map("gd", vim.lsp.buf.definition, bufnr, "Goto Definition1")
                 lsp_map("gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
                 lsp_map("gi", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
