@@ -34,9 +34,10 @@ require("flash").toggle(true)
 
 
 require("focus").setup({
-    enable = false,
+    enable = true,
 
     ui = {
         signcolumn = false
     }
 })
+vim.cmd "FocusDisable"
