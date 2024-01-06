@@ -2,10 +2,10 @@
 #!/bin/bash
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  brew install fzf
+  brew install fzf fd
   /opt/homebrew/opt/fzf/install --no-bash
 else
-  sudo apt update && sudo apt install -y zsh curl tmux gcc cmake unzip gettext
+  sudo apt update && sudo apt install -y zsh curl tmux gcc cmake unzip gettext fd-find
     # Check the system architecture
    git clone https://github.com/neovim/neovim.git --branch v0.9.4 --single-branch
    cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install 
@@ -50,3 +50,6 @@ if [[ "$choice" =~ ^[Yy]$ ]]; then
 else
   echo "Operation canceled."
 fi
+
+
+git config --global alias.gsu 'submodule update --init --recursive'

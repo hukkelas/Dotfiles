@@ -45,8 +45,7 @@ map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", "Tmux sessioniz
 
 
 -- Quick fix list
-map("n", "<C-e>", "<cmd>cnext<CR>zz", "Quick fix cnext")
-map("n", "<C-E>", "<cmd>cprev<CR>zz", "Quick fix cprev")
+map({"n", "v"}, "<C-e>", ":ClangdSwitchSourceHeader <cr>", "Clangd switch source<->header")
 -- map("n", "<leader>k", "<cmd>lnext<CR>zz", "Quick fix lnext")
 -- map("n", "<leader>j", "<cmd>lprev<CR>zz", "Quick fix lprev")
 
@@ -131,8 +130,6 @@ local function toggle_telescope(harpoon_files)
     }):find()
 end
 
-vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
-    { desc = "Open harpoon window" })
 
 
 

@@ -1,6 +1,7 @@
 return { {
     "tanvirtin/monokai.nvim",
-},
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+}, { "rebelot/kanagawa.nvim" },
+    { 'rose-pine/neovim' },
+    { "catppuccin/nvim",      name = "catppuccin", priority = 1000 }
 
 }
