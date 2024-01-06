@@ -124,9 +124,9 @@ return {
             })
             require("lspconfig")["pyright"].setup({
                 on_attach = function(client, bufnr)
-                local lsp_map = require("helpers.keys").lsp_map
-                lsp_map("<leader>=", "<cmd>!black %<cr>", bufnr, "Format")        
-                    
+                    on_attach(client, bufnr)
+                    local lsp_map = require("helpers.keys").lsp_map
+                    lsp_map("<leader>=", "<cmd>!black %<cr>", bufnr, "Format")
                 end,
                 capabilities = capabilities
             })
