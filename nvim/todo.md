@@ -13,5 +13,5 @@ https://github.com/Kohirus/cppassist.nvim
 https://github.com/LucHermitte/lh-cpp
 
 
-Bugs:
-- Yanking to clipboard appends to already present buffer, does not delete previous
+Feats:
+- nvim-autopair FastWrap
