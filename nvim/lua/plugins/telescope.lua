@@ -27,15 +27,16 @@ return {
                 defaults = {
                     mappings = {
                         i = {
-                            ["<C-u>"] = false,
-                            ["<C-d>"] = false,
+                            ["<C-h>"] = "which_key",
+                            ["<C-j>"] = require("telescope.actions").move_selection_next,
+                            ["<C-k>"] = require("telescope.actions").move_selection_previous,
                         },
                     },
                 },
             })
 
             -- Enable telescope fzf native, if installed
-            pcall(require("telescope").load_extension, "fzf")
+            -- pcall(require("telescope").load_extension, "fzf")
             require("telescope").load_extension("undo")
             require("telescope").load_extension("yank_history")
 
@@ -60,7 +61,7 @@ return {
             map("n", "<leader>fD", tsp.diagnostics, "Diagnostics")
             map("n", "<leader>u", "<cmd>Telescope undo<cr>", "Telescope undo")
             map({ "n", "v" }, "<leader>fT", ":Telescope colorscheme <cr>", "Pick colorscheme")
-            map({ "n", "v" }, "<leader>fy",":Telescope yank_history <cr>", "Yank history")
+            map({ "n", "v" }, "<leader>fy", ":Telescope yank_history <cr>", "Yank history")
 
             map("n", "<C-p>", tsp.keymaps, "Search keymaps")
         end,
