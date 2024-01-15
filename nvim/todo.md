@@ -19,3 +19,5 @@ https://github.com/LucHermitte/lh-cpp
 When you have a quote " ..... some code and want to add a new "" it adds double
 - Tab completion gets messed up with Tab sometimes
 - Enable C-S-o for common commands
+Feats:
+- nvim-autopair FastWrap

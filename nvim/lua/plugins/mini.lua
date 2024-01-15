@@ -29,13 +29,6 @@ return {
         end,
     },
     {
-        'echasnovski/mini.pairs',
-        version = '*',
-        opts = function()
-            require("mini.pairs").setup()
-        end 
-    },
-    {
          'echasnovski/mini.cursorword', version = '*',
         opts = function ()
             require("mini.cursorword").setup()
