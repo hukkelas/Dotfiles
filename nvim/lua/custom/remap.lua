@@ -17,7 +17,7 @@ map("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", "Buffer 8")
 map("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", "Buffer 9")
 map("n", "<leader>0", ":BufferLineGoToBuffer 10<CR>", "Buffer 10")
 
--- Window resize 
+-- Window resize
 -- map({"n", "v"}, "<A-h>", ":vertical resize -10<cr>", "Resize -10")
 -- map({"n", "v"}, "<A-l>", ":vertical resize +10<cr>", "Resize -+10")
 -- map({"n", "v"}, "<M-h>", ":vertical resize -10<cr>", "Resize -10")
@@ -35,17 +35,17 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 map("x", "<leader>p", [["_dP]], "Paste without yank")
 
-map({"v"}, "<", "<gv", "Indent without loosing selection")
-map({"v"}, ">", ">gv", "Indent without loosing selection")
+map({ "v" }, "<", "<gv", "Indent without loosing selection")
+map({ "v" }, ">", ">gv", "Indent without loosing selection")
 
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", "Tmux sessionizer new")
 
 
 -- Quick fix list
-map({"n", "v"}, "<C-e>", ":ClangdSwitchSourceHeader <cr>", "Clangd switch source<->header")
+map({ "n", "v" }, "<C-e>", ":ClangdSwitchSourceHeader <cr>", "Clangd switch source<->header")
 -- map("n", "<leader>k", "<cmd>lnext<CR>zz", "Quick fix lnext")
 -- map("n", "<leader>j", "<cmd>lprev<CR>zz", "Quick fix lprev")
 
@@ -61,6 +61,9 @@ wk.register(
             f = { name = "Find" },
             g = { name = "git" },
             P = { name = "Session" },
+            r = { name = "Replace Spectre" },
+            R = { name = "Refactor" },
+
         }
     }
 )
@@ -74,8 +77,8 @@ map({ "n", "v" }, "<leader>tf", ":FocusToggle <cr>", "Toggle focus")
 map({ "n", "v" }, "<leader>gB", ":Telescope git_branches<cr>", "View branches")
 map({ "n", "v" }, "<leader>gC", ":Telescope git_commits<cr>", "View commits")
 map({ "n", "v" }, "<leader>gc", require("telescope.builtin").git_bcommits, "View commits for current buffer")
-map({"n", "v"}, "<leader>gmc", ":Git commit -m ", "Git make commit")
-map({"n", "v"}, "<leader>gmP", ":Git push <cr>", "Git push")
+map({ "n", "v" }, "<leader>gmc", ":Git commit -m ", "Git make commit")
+map({ "n", "v" }, "<leader>gmP", ":Git push <cr>", "Git push")
 
 map({ "n", "v" }, "<leader>gp", ":Gitsigns preview_hunk_inline<cr>", "View commits")
 map({ "n", "v" }, "<leader>gg", ":Git<cr>", "Git status 2")
@@ -89,11 +92,10 @@ local toggle_diffview = function()
     end
 end
 map({ "n", "v" }, "<leader>gd", function() toggle_diffview() end, "Git diff")
-map({"n"}, "<leader>gl", function ()
-   local url = require"gitlinker".get_buf_range_url("n") 
+map({ "n" }, "<leader>gl", function()
+    local url = require "gitlinker".get_buf_range_url("n")
     vim.fn.setreg("+", url)
     print("URL copied to clipboard")
-
 end, "Line URL")
 
 -- Search
@@ -106,8 +108,8 @@ map({ "n", "v" }, "<leader>fk", ":Telescope keymaps <cr>", "Keymaps")
 
 
 vim.keymap.set("n", "<leader>sr", function()
-  return ":IncRename " .. vim.fn.expand("<cword>") 
-end, { expr = true , desc="Rename symbol"})
+    return ":IncRename " .. vim.fn.expand("<cword>")
+end, { expr = true, desc = "Rename symbol" })
 
 local harpoon = require('harpoon')
 harpoon:setup({})
@@ -134,4 +136,4 @@ end
 
 
 -- buffers
-map({"n", "v",}, "<leader>bC", ":%bd|e# <cr>", "Close all buffers")
+map({ "n", "v", }, "<leader>bC", ":%bd|e# <cr>", "Close all buffers")

@@ -92,6 +92,7 @@ return {
                 end, { desc = "Format current buffer with LSP" })
 
                 lsp_map("<leader>=", "<cmd>Format<cr>", bufnr, "Format")
+                lsp_map("<C-space>", vim.lsp.buf.hover, bufnr, "LSP hover");
 
                 -- Attach and configure vim-illuminate
                 require("illuminate").on_attach(client)

@@ -41,3 +41,5 @@ require("focus").setup({
     }
 })
 vim.cmd "FocusDisable"
+
+-- o.foldmethod = "indent"
