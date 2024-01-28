@@ -5,11 +5,6 @@ fi
 source $ZDOTDIR/alias
 # CONDA INIT
 conda_path="$ZDOTDIR/conda_init.zsh"
-if [ -f "$conda_path" ]; then
-  source "$conda_path"
-else
-  echo "File '$conda_path' does not exist."
-fi
 
 # ZSH options
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
@@ -67,4 +62,3 @@ then
     tmux attach -t login || tmux new -s login
 else
 fi
-

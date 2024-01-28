@@ -26,6 +26,10 @@ o.number = true
 o.splitbelow = true
 o.splitright = true
 
+-- Show spaces / tabs
+o.listchars = "tab:>·,trail:~,extends:>,precedes:<,space:."
+o.list = true
+
 require("custom.lazy")
 require("custom.remap")
 
@@ -41,5 +45,6 @@ require("focus").setup({
     }
 })
 vim.cmd "FocusDisable"
+
 
 -- o.foldmethod = "indent"

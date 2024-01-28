@@ -54,6 +54,7 @@ return {
 
             map("n", "<leader>fa", tsp.find_files, "Find all files")
             map("n", "<leader>ff", tsp.git_files, "Git files")
+            map("n", "<C-p>", tsp.git_files, "Git files")
             map("n", "<leader>fh", tsp.help_tags, "Help")
             map("n", "<leader>fw", tsp.grep_string, "Current word")
             map("n", "<leader>fg", tsp.live_grep, "Grep")
@@ -63,7 +64,6 @@ return {
             map({ "n", "v" }, "<leader>fT", ":Telescope colorscheme <cr>", "Pick colorscheme")
             map({ "n", "v" }, "<leader>fy", ":Telescope yank_history <cr>", "Yank history")
 
-            map("n", "<C-p>", tsp.keymaps, "Search keymaps")
         end,
     },
 }

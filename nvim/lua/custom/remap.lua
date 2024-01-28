@@ -68,7 +68,7 @@ wk.register(
     }
 )
 -- Toggle
-map({ "n", "v" }, "<leader>te", ":Neotree toggle<cr>", "Toggle sidebar")
+map({ "n", "v" }, "<leader>te", ":Neotree reveal float <cr>", "Toggle sidebar")
 map({ "n", "v" }, "<leader>tt", ":TroubleToggle<cr>", "Trouble toggle")
 map({ "n", "v" }, "<leader>z", ":ZenMode <cr>", "ZenMode")
 map({ "n", "v" }, "<leader>tf", ":FocusToggle <cr>", "Toggle focus")
