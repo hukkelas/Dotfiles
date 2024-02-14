@@ -40,7 +40,7 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v
-source $ZDOTDIR/plugins/vi_mode.zsh
+source $ZDOTDIR/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 export KEYTIMEOUT=1
 source $ZDOTDIR/scripts/cursor_mode
 autoload -Uz edit-command-line
