@@ -1,4 +1,5 @@
 local o = vim.opt
+
 o.termguicolors = true
 o.shiftwidth = 4
 o.tabstop = 4
@@ -27,14 +28,21 @@ o.splitbelow = true
 o.splitright = true
 
 -- Show spaces / tabs
-o.listchars = "tab:>·,trail:~,extends:>,precedes:<,space:."
+local space = "·"
+o.listchars:append {
+	tab = "│─",
+	multispace = space,
+	lead = space,
+	trail = space,
+	nbsp = space
+}
+-- o.listchars = "tab:>x,trail:~,extends:>,precedes:<,space:~"
 o.list = true
 
 require("custom.lazy")
 require("custom.remap")
 
 vim.cmd "colorscheme catppuccin-mocha"
-require("flash").toggle(true)
 
 
 require("focus").setup({
