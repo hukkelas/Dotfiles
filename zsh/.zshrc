@@ -34,6 +34,10 @@ alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 
+# alt-backspace for word deletion
+bindkey '^[^?' backward-kill-word
+
+
 # Make ZSH like vim
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
