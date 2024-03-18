@@ -15,7 +15,7 @@ else
   if [[ ! -d $fzf_dir ]]; then
     apt install -y golang-go
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
+    sudo ~/.fzf/install
   else
     echo "The folder $fzf_dir already exists"
   fi
