@@ -12,6 +12,6 @@ return {
                 vim.cmd.DiffviewOpen()
             end
         end
-        vim.keymap.setmap({ "n", "v" }, "<leader>gd", function() toggle_diffview() end, { desc = "Git diff" })
+        vim.keymap.set({ "n", "v" }, "<leader>gd", function() toggle_diffview() end, { desc = "Git diff" })
     end
 }

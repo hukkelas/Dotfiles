@@ -383,9 +383,9 @@ require('lazy').setup({
       vim.keymap.set({ "n", "v" }, "<leader>gB", builtin.git_branches, { desc = "Git branches" })
       vim.keymap.set({ "n", "v" }, "<leader>gC", builtin.git_commits, { desc = "Git commits" })
       vim.keymap.set({ "n", "v" }, "<leader>gc", builtin.git_bcommits, { desc = "Git commits for current buffer" })
-      vim.keymap.setmap({ "n", "v" }, "<leader>fT", ":Telescope colorscheme <cr>", { desc = "Pick colorscheme" })
-      vim.keymap.setmap({ "n", "v" }, "<leader>fy", ":Telescope yank_history <cr>", { desc = "Yank history" })
-      vim.keymap.setmap("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = "Telescope undo" })
+      vim.keymap.set({ "n", "v" }, "<leader>fT", ":Telescope colorscheme <cr>", { desc = "Pick colorscheme" })
+      vim.keymap.set({ "n", "v" }, "<leader>fy", ":Telescope yank_history <cr>", { desc = "Yank history" })
+      vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = "Telescope undo" })
 
 
       -- Slightly advanced example of overriding default behavior and theme
