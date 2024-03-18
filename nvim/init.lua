@@ -244,11 +244,12 @@ require('lazy').setup({
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
+        add          = { text = '│' },
+        change       = { text = '│' },
+        delete       = { text = '_' },
+        topdelete    = { text = '‾' },
         changedelete = { text = '~' },
+        untracked    = { text = '┆' },
       },
     },
   },
@@ -316,6 +317,8 @@ require('lazy').setup({
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+      { "debugloop/telescope-undo.nvim" },
+      "gbprod/yanky.nvim"
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -380,6 +383,9 @@ require('lazy').setup({
       vim.keymap.set({ "n", "v" }, "<leader>gB", builtin.git_branches, { desc = "Git branches" })
       vim.keymap.set({ "n", "v" }, "<leader>gC", builtin.git_commits, { desc = "Git commits" })
       vim.keymap.set({ "n", "v" }, "<leader>gc", builtin.git_bcommits, { desc = "Git commits for current buffer" })
+      vim.keymap.setmap({ "n", "v" }, "<leader>fT", ":Telescope colorscheme <cr>", { desc = "Pick colorscheme" })
+      vim.keymap.setmap({ "n", "v" }, "<leader>fy", ":Telescope yank_history <cr>", { desc = "Yank history" })
+      vim.keymap.setmap("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = "Telescope undo" })
 
 
       -- Slightly advanced example of overriding default behavior and theme
