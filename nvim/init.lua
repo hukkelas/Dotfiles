@@ -233,7 +233,7 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',    opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following lua:
@@ -268,7 +268,7 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  { -- Useful plugin to show you pending keybinds.
+  {                     -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
@@ -315,7 +315,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -364,19 +364,22 @@ require('lazy').setup({
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sk', builtin.command_history, { desc = '[S]earch [C]ommands' })
+      vim.keymap.set('n', '<leader>sc', builtin.command_history, { desc = '[S]earch [C]ommand History' })
+      vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
+      vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch [B]uffers' })
       vim.keymap.set('n', '<leader>sf', builtin.git_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sa', builtin.find_files, { desc = '[S]earch [All] files' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>sG', builtin.current_buffer_fuzzy_find, { desc = '[S]earch by [G]rep in current file' })
+      vim.keymap.set('n', '<leader>sG', builtin.current_buffer_fuzzy_find,
+        { desc = '[S]earch by [G]rep in current file' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>s.', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>sr', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set({"n", "v"}, "<leader>gB", builtin.git_branches, {desc = "Git branches"})
-      vim.keymap.set({"n", "v"}, "<leader>gC", builtin.git_commits, {desc = "Git commits"})
-      vim.keymap.set({"n", "v"}, "<leader>gc", builtin.git_bcommits, {desc = "Git commits for current buffer"})
+      vim.keymap.set({ "n", "v" }, "<leader>gB", builtin.git_branches, { desc = "Git branches" })
+      vim.keymap.set({ "n", "v" }, "<leader>gC", builtin.git_commits, { desc = "Git commits" })
+      vim.keymap.set({ "n", "v" }, "<leader>gc", builtin.git_bcommits, { desc = "Git commits for current buffer" })
 
 
       -- Slightly advanced example of overriding default behavior and theme
@@ -503,6 +506,7 @@ require('lazy').setup({
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map("<leader>=", vim.lsp.buf.format, "Format Document")
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -769,7 +773,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', "cpp"},
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', "cpp" },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -841,69 +845,64 @@ require('lazy').setup({
 --
 --
 -- Key cursor in the middle
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", {desc= "Move select up"})
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", {desc= "Move select down"})
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move select up" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move select down" })
 
 vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz", {desc= "Jump half page down"})
-vim.keymap.set("n", "<C-u>", "<C-u>zz", {desc= "Jump half page up"})
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Jump half page down" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Jump half page up" })
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("x", "<leader>p", [["_dP]], {desc= "Paste without yank"})
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without yank" })
 
-vim.keymap.set({ "v" }, "<", "<gv", {desc= "Indent without loosing selection"})
-vim.keymap.set({ "v" }, ">", ">gv", {desc= "Indent without loosing selection"})
+vim.keymap.set({ "v" }, "<", "<gv", { desc = "Indent without loosing selection" })
+vim.keymap.set({ "v" }, ">", ">gv", { desc = "Indent without loosing selection" })
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", {desc= "Tmux sessionizer new"})
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Tmux sessionizer new" })
 
 
-vim.keymap.set({ "n", "v" }, "<C-e>", ":ClangdSwitchSourceHeader <cr>", {desc= "Clangd switch source<->header"})
+vim.keymap.set({ "n", "v" }, "<C-e>", ":ClangdSwitchSourceHeader <cr>", { desc = "Clangd switch source<->header" })
 
 
-vim.keymap.set({ "n", "v" }, "<leader>gp", ":Gitsigns preview_hunk_inline<cr>", {desc= "View commits"})
-vim.keymap.set({ "n", "v" }, "<leader>gg", ":Git<cr>", {desc= "Git status 2"})
+vim.keymap.set({ "n", "v" }, "<leader>gp", ":Gitsigns preview_hunk_inline<cr>", { desc = "View commits" })
+vim.keymap.set({ "n", "v" }, "<leader>gg", ":Git<cr>", { desc = "Git status 2" })
 local toggle_diffview = function()
-    local lib = require("diffview.lib")
-    local view = lib.get_current_view()
-    if view then
-        vim.cmd.DiffviewClose()
-    else
-        vim.cmd.DiffviewOpen()
-    end
+  local lib = require("diffview.lib")
+  local view = lib.get_current_view()
+  if view then
+    vim.cmd.DiffviewClose()
+  else
+    vim.cmd.DiffviewOpen()
+  end
 end
-vim.keymap.set({ "n", "v" }, "<leader>gd", function() toggle_diffview() end, {desc= "Git diff"})
+vim.keymap.set({ "n", "v" }, "<leader>gd", function() toggle_diffview() end, { desc = "Git diff" })
 vim.keymap.set({ "n" }, "<leader>gl", function()
-    local url = require "gitlinker".get_buf_range_url("n")
-    vim.fn.setreg("+", url)
-    print("URL copied to clipboard")
-end, {desc="Copy Line URL"})
+  local url = require "gitlinker".get_buf_range_url("n")
+  vim.fn.setreg("+", url)
+  print("URL copied to clipboard")
+end, { desc = "Copy Line URL" })
 
 -- buffers
-vim.keymap.set({ "n", "v", }, "<leader>bC", ":%bd|e# <cr>", {desc= "Close all buffers"})
+vim.keymap.set({ "n", "v", }, "<leader>bC", ":%bd|e# <cr>", { desc = "Close all buffers" })
 
--- map("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", "Buffer 1")
--- map("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", "Buffer 2")
--- map("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", "Buffer 3")
--- map("n", "<leader>4", ":BufferLineGoToBuffer 4<CR>", "Buffer 4")
--- map("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", "Buffer 5")
--- map("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", "Buffer 6")
--- map("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", "Buffer 7")
--- map("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", "Buffer 8")
--- map("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", "Buffer 9")
--- map("n", "<leader>0", ":BufferLineGoToBuffer 10<CR>", "Buffer 10")
- 
+
 local function gitsigns_visual_op(op)
-    return function()
-        return require('gitsigns')[op]({ vim.fn.line("."), vim.fn.line("v") })
-    end
+  return function()
+    return require('gitsigns')[op]({ vim.fn.line("."), vim.fn.line("v") })
+  end
 end
-vim.keymap.set("n", "<leader>gs", ":Gitsigns stage_hunk<cr>", {desc= "GitSigns: stage hunk"})
-vim.keymap.set("n", "<leader>gr", ":Gitsigns reset_hunk<cr>", {desc= "GitSigns: reset hunk"})
-vim.keymap.set("n", "<leader>gu", ":Gitsigns undo_stage_hunk<cr>", {desc= "GitSigns: undo hunk"})
-vim.keymap.set("v", "<leader>gs", gitsigns_visual_op "stage_hunk", {desc= "GitSigns: stage selected hunk"})
-vim.keymap.set("v", "<leader>gu", gitsigns_visual_op "undo_hunk", {desc= "GitSigns: undo selected hunk"})
-vim.keymap.set("v", "<leader>gr", gitsigns_visual_op "reset_hunk", {desc= "GitSigns: reset selected hunk"})
+vim.keymap.set("n", "<leader>gs", ":Gitsigns stage_hunk<cr>", { desc = "GitSigns: stage hunk" })
+vim.keymap.set("n", "<leader>gr", ":Gitsigns reset_hunk<cr>", { desc = "GitSigns: reset hunk" })
+vim.keymap.set("n", "<leader>gu", ":Gitsigns undo_stage_hunk<cr>", { desc = "GitSigns: undo hunk" })
+vim.keymap.set("v", "<leader>gs", gitsigns_visual_op "stage_hunk", { desc = "GitSigns: stage selected hunk" })
+vim.keymap.set("v", "<leader>gu", gitsigns_visual_op "undo_hunk", { desc = "GitSigns: undo selected hunk" })
+vim.keymap.set("v", "<leader>gr", gitsigns_visual_op "reset_hunk", { desc = "GitSigns: reset selected hunk" })
+
+vim.keymap.set({ "n", "v" }, "<leader>Q", ":qa<cr>", { desc = "Quit all" })
+vim.keymap.set({ "n", "v" }, "<leader>z", ":ZenMode <cr>", { desc = "ZenMode" })
+vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "close window" })
+vim.keymap.set("n", "<leader>w", ":bd<CR>", { desc = "close buffer" })
