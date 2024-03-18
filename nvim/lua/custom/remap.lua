@@ -118,3 +118,7 @@ harpoon:setup({})
 
 -- buffers
 map({ "n", "v", }, "<leader>bC", ":%bd|e# <cr>", "Close all buffers")
+map("n", "<M-h>", function() harpoon:list():select(1) end, "Harpoon 1")
+map("n", "<M-j>", function() harpoon:list():select(2) end, "Harpoon 2")
+map("n", "<M-k>", function() harpoon:list():select(3) end, "Harpoon 3")
+map("n", "<M-l>", function() harpoon:list():select(4) end, "Harpoon 4")
