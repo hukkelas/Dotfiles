@@ -7,7 +7,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
   sudo apt update && sudo apt install -y zsh curl tmux gcc cmake unzip gettext fd-find
     # Check the system architecture
-   git clone https://github.com/neovim/neovim.git --branch v0.9.4 --single-branch
+   git clone https://github.com/neovim/neovim.git 
    cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install 
 
   # Check if fzf is already installed
