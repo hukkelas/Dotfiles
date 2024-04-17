@@ -8,7 +8,7 @@ return {
         },
         plugins = {
             options = {
-                enabled = false,
+                enabled = true,
                 ruler = false, -- disables the ruler text in the cmd line area
                 showcmd = false, -- disables the command in the last line of the screen
                 -- you may turn on/off statusline in zen mode by setting 'laststatus'

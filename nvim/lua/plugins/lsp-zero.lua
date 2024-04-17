@@ -7,8 +7,7 @@ return {
             "williamboman/mason-lspconfig.nvim",
             {
                 "j-hui/fidget.nvim",
-                tag = "legacy",
-                event = "LspAttach",
+                opts = {}
             },
             "folke/neodev.nvim",
             "RRethy/vim-illuminate",
@@ -24,6 +23,7 @@ return {
                     "clangd",
                     "pylsp",
                     "vimls",
+                    "stylua"
                 },
                 automatic_installation = true,
             })
@@ -69,17 +69,23 @@ return {
                 local lsp_map = require("helpers.keys").lsp_map
 
                 lsp_map("<leader>sa", vim.lsp.buf.code_action, bufnr, "Code action")
-                lsp_map("<leader>sd", vim.lsp.buf.type_definition, bufnr, "Type definition")
+                lsp_map("<leader>sd", require("telescope.builtin").lsp_type_definitions, bufnr, "Type definition")
                 lsp_map("<leader>se", vim.diagnostic.open_float, bufnr, "Show error")
                 lsp_map("<leader>sl", function()
-                        require("telescope.builtin").lsp_document_symbols({symbol_width=50})
+                        require("telescope.builtin").lsp_document_symbols({ symbol_width = 50 })
                     end,
                     bufnr,
                     "Document symbols"
                 )
-                lsp_map("gd", vim.lsp.buf.definition, bufnr, "Goto Definition1")
+                lsp_map("<leader>sL", function()
+                        require("telescope.builtin").lsp_dynamic_workspace_symbols({ symbol_width = 50 })
+                    end,
+                    bufnr,
+                    "Workspace Document symbols"
+                )
+                lsp_map('gd', require('telescope.builtin').lsp_definitions, bufnr, '[G]oto [D]efinition')
                 lsp_map("gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
-                lsp_map("gi", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
+                lsp_map("gi", require("telescope.builtin").lsp_implementations, bufnr, "Goto Implementation")
                 lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
                 lsp_map("gD", vim.lsp.buf.declaration, bufnr, "Goto Declaration")
                 lsp_map("[d", function() vim.diagnostic.goto_next() end, bufnr, "Next error")
