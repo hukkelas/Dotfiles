@@ -22,8 +22,14 @@ else
 fi
 
 # Create symbolic links for configuration files
-ln -s "$HOME/.dotfiles/zsh/.zshenv" "$HOME/.zshenv"
-ln -s "$HOME/.dotfiles/tmux/.tmux.conf" "$HOME/.tmux.conf"
+# ln -s "$HOME/.dotfiles/zsh/.zshenv" "$HOME/.zshenv"
+# ln -s "$HOME/.dotfiles/tmux/.tmux.conf" "$HOME/.tmux.conf"
+rm ~/.bashrc
+rm ~/.profile
+rm ~/.inputrc
+ln -sv ~/.dotfiles/bash/.profile ~/.profile
+ln -sv ~/.dotfiles/bash/.bashrc ~/.bashrc
+ln -sv ~/.dotfiles/bash/.inputrc ~/.inputrc
 
 # Install Tmux Plugin Manager (TPM)
 tpm_dir=~/.tmux/plugins/tpm
@@ -37,19 +43,6 @@ fi
 # Confirm the action with the user
 read -p "Are you sure you want to set Zsh as the default shell? (y/n): " choice
 
-if [[ "$choice" =~ ^[Yy]$ ]]; then
-  # Change the default shell to Zsh
-  chsh -s $(which zsh)
-
-  # Check if the change was successful
-  if [ $? -eq 0 ]; then
-    echo "Zsh is now your default shell."
-  else
-    echo "Failed to set Zsh as the default shell."
-  fi
-else
-  echo "Operation canceled."
-fi
 
 
 git config --global alias.gsu 'submodule update --init --recursive'
