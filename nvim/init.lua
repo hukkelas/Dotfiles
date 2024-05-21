@@ -1,6 +1,6 @@
 local o = vim.opt
 
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = false
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
