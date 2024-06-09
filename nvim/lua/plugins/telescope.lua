@@ -59,12 +59,11 @@ return {
                     previewer = false,
                 }))
                 -- Search
-                map({ "n", "v" }, "<leader>fc", tsp.command_history, "Command history")
-                map({ "n", "v" }, "<leader>fC", tsp.commands, "Command")
-                map({ "n", "v" }, "<leader>fb", tsp.buffers, "Buffers")
-                map({ "n", "v" }, "<leader>fk", tsp.keymaps, "Keymaps")
             end, "Search in current buffer")
-
+            map({ "n", "v" }, "<leader>fc", tsp.command_history, "Command history")
+            map({ "n", "v" }, "<leader>fC", tsp.commands, "Command")
+            map({ "n", "v" }, "<leader>fb", tsp.buffers, "Buffers")
+            map({ "n", "v" }, "<leader>fk", tsp.keymaps, "Keymaps")
             map("n", "<leader>fa", tsp.find_files, "Find all files")
             map("n", "<leader>ff", tsp.git_files, "Git files")
             map("n", "<C-p>", tsp.git_files, "Git files")
