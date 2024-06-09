@@ -110,11 +110,6 @@ end, "Line URL")
 
 
 
-
-vim.keymap.set("n", "<leader>sr", function()
-    return ":IncRename " .. vim.fn.expand("<cword>")
-end, { expr = true, desc = "Rename symbol" })
-
 local harpoon = require('harpoon')
 harpoon:setup({})
 
