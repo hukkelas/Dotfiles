@@ -34,3 +34,7 @@ alias ds="docker stop"
 
 # shortcuts
 alias ns="nvidia-smi"
+# tmux
+
+alias tmuxo=tmux-sessionizer $1
+

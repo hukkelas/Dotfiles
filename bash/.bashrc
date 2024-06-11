@@ -8,6 +8,7 @@ esac
 export DOTFILES=$HOME/.dotfiles
 export NVIM_APP_NAME=$DOTFILES/nvim 
 export XDG_CONFIG_HOME=$DOTFILES
+export PATH="$DOTFILES/bin:$PATH"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
