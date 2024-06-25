@@ -5,7 +5,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install fzf fd
   /opt/homebrew/opt/fzf/install --no-bash
 else
-  sudo apt update && sudo apt install -y zsh curl tmux gcc cmake unzip gettext fd-find nodejs npm python3 python3-pip python3-venv clangd
+  sudo apt update && sudo apt install -y zsh curl tmux gcc cmake unzip gettext fd-find nodejs npm python3 python3-pip python3-venv clangd git
+  git config --global credential.helper 'cache --timeout=3600'
     # Check the system architecture
    git clone https://github.com/neovim/neovim.git 
    cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install 
