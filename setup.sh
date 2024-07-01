@@ -16,7 +16,7 @@ else
   if [[ ! -d $fzf_dir ]]; then
     apt install -y golang-go
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    sudo ~/.fzf/install
+    ~/.fzf/install
   else
     echo "The folder $fzf_dir already exists"
   fi
@@ -40,10 +40,6 @@ if [[ ! -d $tpm_dir ]]; then
 else
   echo "The folder $tpm_dir already exists"
 fi
-
-# Confirm the action with the user
-read -p "Are you sure you want to set Zsh as the default shell? (y/n): " choice
-
 
 
 git config --global alias.gsu 'submodule update --init --recursive'
